@@ -1,0 +1,99 @@
+.thread-group {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-bottom: 40px;
+  margin-left: auto;
+}
+
+.thread-card {
+  position: relative;
+  width: 100%;
+  margin: 10px 0; 
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .subject {
+    margin-bottom: 5px;
+    color: $main-text;
+  }
+
+  .question {
+    margin-bottom: 10px;
+    color: $main-text;
+    font-weight: bold;
+  }
+
+  .text {
+    margin-bottom: 20px;
+    color: $main-text;
+  }
+
+  .footer {
+    @include flex-center;
+    justify-content: space-between;
+    color: $main-text;
+    font-size: 0.9em;
+  }
+
+  .team {
+    font-weight: bold;
+  }
+
+  .date {
+    font-style: italic;
+  }
+
+  .message-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    color: white;
+    background-color: $count-low-rating;
+  }
+
+  &.low-score {
+    .subject {
+      color: $title-low-rating;
+    }
+    .message-count {
+      background-color: $count-low-rating;
+    }
+  }
+
+  &.high-score {
+    .subject {
+      color: $title-high-rating;
+    }
+    .message-count {
+      background-color: $count-high-rating;
+    }
+  }
+
+  & + .thread-card {
+    margin-top: 10px;
+  }
+}
+
+.collapsed {
+  .thread-card {
+    &:not(:first-child) {
+      z-index: calc(1000 - var(--index)); // Ensure higher z-index for higher cards
+      margin-top: -130px; // Adjust the overlap margin
+      --index: var(--index, 0) + 1;
+    }
+  }
+}
+
+.expanded .thread-card {
+  z-index: 0;
+  margin-top: 10px;
+  margin-left: 0;
+}

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $main-background;
+  }
+  
+  h1 {
+    margin-top: 20px;
+    color: $main-text;
+    text-align: center;
+  }
+  
+  .main-container {
+    max-width: $max-width;
+    min-width: $min-width;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .threads-grid {
+    @include flex-column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }

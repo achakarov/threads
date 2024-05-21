@@ -1,11 +1,9 @@
+import HomePage from './pages/HomePage';
+
 import './index.scss';
 
 function App() {
-  return (
-    <>
-      <div>Feedback</div>
-    </>
-  );
+  return <HomePage />;
 }
 
 export default App;
