@@ -1,99 +1,100 @@
 .thread-group {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin-right: auto;
   margin-bottom: 40px;
-  margin-left: auto;
-}
 
-.thread-card {
-  position: relative;
-  width: 100%;
-  margin: 10px 0; 
-  padding: 20px;
-  border-radius: 8px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  .thread-card {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  .subject {
-    margin-bottom: 5px;
-    color: $main-text;
-  }
+    .inner-container {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      justify-content: space-between;
 
-  .question {
-    margin-bottom: 10px;
-    color: $main-text;
-    font-weight: bold;
-  }
+      .left-side {
+        width: 70%;
+        margin-right: 10px;
 
-  .text {
-    margin-bottom: 20px;
-    color: $main-text;
-  }
+        .subject,
+        .question,
+        .text {
+          color: $main-text;
+        }
 
-  .footer {
-    @include flex-center;
-    justify-content: space-between;
-    color: $main-text;
-    font-size: 0.9em;
-  }
+        .subject {
+          margin-bottom: 5px;
+        }
 
-  .team {
-    font-weight: bold;
-  }
+        .question {
+          margin-bottom: 10px;
+        }
 
-  .date {
-    font-style: italic;
-  }
+        .text {
+          margin-bottom: 20px;
+        }
+      }
 
-  .message-count {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    border-radius: 50%;
-    color: white;
-    background-color: $count-low-rating;
-  }
-
-  &.low-score {
-    .subject {
-      color: $title-low-rating;
+      .right-side {
+        @include flex-column;
+        align-items: flex-end;
+        width: 30%;
+        color: $main-text;
+      }
     }
+
     .message-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      color: white;
       background-color: $count-low-rating;
     }
+
+    &.low-score {
+      .left-side {
+        .subject {
+          color: $title-low-rating;
+        }
+      }
+      .message-count {
+        background-color: $count-low-rating;
+      }
+    }
+
+    &.high-score {
+      .left-side {
+        .subject {
+          color: $title-high-rating;
+        }
+      }
+      .message-count {
+        background-color: $count-high-rating;
+      }
+    }
   }
 
-  &.high-score {
-    .subject {
-      color: $title-high-rating;
-    }
-    .message-count {
-      background-color: $count-high-rating;
+  .collapsed {
+    .thread-card {
+      &:not(:first-child) {
+        margin-top: -120px;
+        margin-left: -10px;
+      }
     }
   }
 
-  & + .thread-card {
+  .expanded .thread-card {
+    z-index: 0;
     margin-top: 10px;
+    margin-left: 0;
   }
-}
-
-.collapsed {
-  .thread-card {
-    &:not(:first-child) {
-      z-index: calc(1000 - var(--index)); // Ensure higher z-index for higher cards
-      margin-top: -130px; // Adjust the overlap margin
-      --index: var(--index, 0) + 1;
-    }
-  }
-}
-
-.expanded .thread-card {
-  z-index: 0;
-  margin-top: 10px;
-  margin-left: 0;
 }
