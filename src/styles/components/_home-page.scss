@@ -2,7 +2,6 @@ body {
   background-color: $main-background;
 
   .main-container {
-    position: relative;
     max-width: $max-width;
     min-width: $min-width;
     margin: 0 auto;
@@ -10,6 +9,7 @@ body {
     .threads-grid {
       @include flex-column;
       align-items: center;
+      gap: 20px;
       width: 100%;
       padding: 20px;
 

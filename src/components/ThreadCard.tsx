@@ -5,10 +5,10 @@ import { Thread } from '../models/Thread';
 import { formatDate } from '../utils/helpers/threads';
 
 interface ThreadCardProps {
-  group: Thread[];
+  threadGroup: Thread[];
 }
 
-export const ThreadCard: React.FC<ThreadCardProps> = ({ group }) => {
+export const ThreadCard: React.FC<ThreadCardProps> = ({ threadGroup }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpand = () => {
@@ -23,16 +23,19 @@ export const ThreadCard: React.FC<ThreadCardProps> = ({ group }) => {
 
   return (
     <div
-      className={`thread-group ${expanded ? 'expanded' : 'collapsed'}`}
+      className={`thread-group ${expanded ? 'expanded' : 'collapsed'} `}
       onClick={handleExpand}
     >
-      {group.map((thread, index) => (
+      {threadGroup.map((thread, index) => (
         <div
           key={thread.id}
-          className={`thread-card ${scoreClass(thread.score ?? 0)}`}
+          className={`thread-card ${scoreClass(thread.score ?? 0)} ${
+            index > 0 ? 'secondary-reply' : 'main-reply'
+          }`}
+          style={{ '--index': index } as React.CSSProperties}
         >
-          {index === 0 && group.length > 1 && !expanded && (
-            <div className="message-count">{group.length} messages</div>
+          {index === 0 && threadGroup.length > 1 && !expanded && (
+            <div className="message-count">{threadGroup.length} messages</div>
           )}
           <div className="inner-container">
             <div className="left-side">

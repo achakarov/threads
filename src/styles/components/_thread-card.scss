@@ -1,17 +1,27 @@
 .thread-group {
   position: relative;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   .thread-card {
     position: relative;
     width: 100%;
     padding: 20px;
     border-radius: 8px;
-    background: white;
+    background: $card-background;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    &.main-reply {
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    &.secondary-reply {
+      @include stacked-card-position(10px, var(--index));
+    }
 
     .inner-container {
       display: flex;
@@ -52,11 +62,11 @@
 
     .message-count {
       position: absolute;
-      top: 10px;
+      top: -10px;
       right: 10px;
       padding: 5px 10px;
-      border-radius: 50%;
-      color: white;
+      border-radius: 10px;
+      color: $card-background;
       background-color: $count-low-rating;
     }
 
@@ -81,20 +91,5 @@
         background-color: $count-high-rating;
       }
     }
-  }
-
-  .collapsed {
-    .thread-card {
-      &:not(:first-child) {
-        margin-top: -120px;
-        margin-left: -10px;
-      }
-    }
-  }
-
-  .expanded .thread-card {
-    z-index: 0;
-    margin-top: 10px;
-    margin-left: 0;
   }
 }

@@ -6,7 +6,7 @@ import { getThreads } from '../../services/ThreadsApiService';
 
 import { ThreadCard } from '../../components/ThreadCard';
 
-export const HomePage = () => {
+export const HomePage = (): JSX.Element => {
   const [threadsGroups, setThreadsGroups] = useState<Thread[][]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,7 +30,7 @@ export const HomePage = () => {
           <div className="error">{error}</div>
         ) : (
           threadsGroups.map((group, index) => (
-            <ThreadCard key={index} group={group} />
+            <ThreadCard key={index} threadGroup={group} />
           ))
         )}
       </div>

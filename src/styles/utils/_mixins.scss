@@ -10,3 +10,9 @@
     flex-direction: column;
   }
   
+  @mixin stacked-card-position($positionValue, $index) {
+    position: absolute;
+    top: calc(#{$positionValue} * #{$index});
+    left: calc(#{$positionValue} * #{$index});
+    z-index: calc(999 - #{$index});
+  }
