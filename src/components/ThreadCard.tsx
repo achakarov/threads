@@ -30,7 +30,11 @@ export const ThreadCard: React.FC<ThreadCardProps> = ({ threadGroup }) => {
         <div
           key={thread.id}
           className={`thread-card ${scoreClass(thread.score ?? 0)} ${
-            index > 0 ? 'secondary-reply' : 'main-reply'
+            expanded
+              ? 'expanded-reply'
+              : index > 0
+              ? 'secondary-reply'
+              : 'main-reply'
           }`}
           style={{ '--index': index } as React.CSSProperties}
         >

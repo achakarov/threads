@@ -1,17 +1,17 @@
 .thread-group {
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
 
   .thread-card {
     position: relative;
     width: 100%;
-    padding: 20px;
+    margin-bottom: $spacing-xlarge;
+    padding: $spacing-large;
     border-radius: 8px;
     background: $card-background;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: $main-box-shadow;
 
     &.main-reply {
       top: 0;
@@ -20,7 +20,16 @@
     }
 
     &.secondary-reply {
-      @include stacked-card-position(10px, var(--index));
+      @include stacked-card-position($spacing-medium, var(--index));
+      margin-bottom: 0;
+    }
+
+    &.expanded-reply {
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: auto;
+      margin-bottom: $spacing-xlarge;
     }
 
     .inner-container {
@@ -31,7 +40,7 @@
 
       .left-side {
         width: 70%;
-        margin-right: 10px;
+        margin-right: $spacing-medium;
 
         .subject,
         .question,
@@ -40,15 +49,15 @@
         }
 
         .subject {
-          margin-bottom: 5px;
+          margin-bottom: $spacing-small;
         }
 
         .question {
-          margin-bottom: 10px;
+          margin-bottom: $spacing-medium;
         }
 
         .text {
-          margin-bottom: 20px;
+          margin-bottom: $spacing-large;
         }
       }
 
@@ -63,9 +72,9 @@
     .message-count {
       position: absolute;
       top: -10px;
-      right: 10px;
+      right: $spacing-medium;
       padding: 5px 10px;
-      border-radius: 10px;
+      border-radius: $spacing-medium;
       color: $card-background;
       background-color: $count-low-rating;
     }
@@ -90,6 +99,19 @@
       .message-count {
         background-color: $count-high-rating;
       }
+    }
+  }
+
+  &.collapsed {
+    .secondary-reply {
+      @include stacked-card-position($spacing-medium, var(--index));
+    }
+  }
+
+  &.expanded {
+    .thread-card {
+      position: relative;
+      margin-bottom: $spacing-xlarge;
     }
   }
 }
