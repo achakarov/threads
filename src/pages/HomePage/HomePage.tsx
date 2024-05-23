@@ -15,8 +15,8 @@ export const HomePage = () => {
       try {
         const threads = await getThreads();
         setThreadsGroups(threads);
-      } catch (err) {
-        setError((err as Error).message);
+      } catch (error) {
+        setError((error as Error).message);
       }
     };
 

@@ -31,7 +31,7 @@ export const ThreadCard: React.FC<ThreadCardProps> = ({ group }) => {
           key={thread.id}
           className={`thread-card ${scoreClass(thread.score ?? 0)}`}
         >
-          {index === 0 && group.length && !expanded && (
+          {index === 0 && group.length > 1 && !expanded && (
             <div className="message-count">{group.length} messages</div>
           )}
           <div className="inner-container">
