@@ -11,11 +11,7 @@ interface ThreadCardProps {
 export const ThreadCard: React.FC<ThreadCardProps> = ({ threadGroup }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const handleExpand = (): void => {
-    if (!expanded) {
-      setExpanded(true);
-    }
-  };
+  const handleExpand = (): void => setExpanded((prev) => !prev);
 
   const scoreClass = (score: number): string => {
     return score <= 5 ? 'low-score' : 'high-score';
