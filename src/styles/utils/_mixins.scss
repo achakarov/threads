@@ -13,3 +13,12 @@
 @mixin width($widthPercentage) {
   width: $widthPercentage;
 }
+
+@mixin warning-message{
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@mixin relative-position {
+  position: relative;
+}

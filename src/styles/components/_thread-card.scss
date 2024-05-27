@@ -1,10 +1,10 @@
 .thread-group {
   @include width(100%);
-  position: relative;
-  
+  @include relative-position;;
+
   .thread-card {
     @include width(100%);
-    position: relative;
+    @include relative-position;;
     margin-bottom: $spacing-xlarge;
     padding: $spacing-large;
     border-radius: 8px;
@@ -25,7 +25,7 @@
     }
 
     &.expanded-reply {
-      position: relative;
+      @include relative-position;;
       top: auto;
       left: auto;
       z-index: auto;
@@ -39,7 +39,7 @@
       justify-content: space-between;
 
       .left-side {
-        @include width(70%);
+        @include width(65%);
         margin-right: $spacing-medium;
 
         .subject,
@@ -63,14 +63,19 @@
 
       .right-side {
         @include flex-column;
-        @include width(30%);
+        @include width(35%);
         align-items: flex-end;
         color: $main-text;
+
+        .team {
+          margin-bottom: $spacing-small;
+          text-align: end;
+        }
       }
 
       .date,
       .question {
-        font-size:0.9rem;
+        font-size: 0.9rem;
       }
     }
 
@@ -116,7 +121,7 @@
 
   &.expanded {
     .thread-card {
-      position: relative;
+      @include relative-position;;
       margin-bottom: $spacing-xlarge;
     }
   }

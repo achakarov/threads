@@ -5,25 +5,24 @@ body {
   background-color: $main-background;
 
   .main-container {
-    max-width: $max-width;
-    min-width: $min-width;
-    margin: 0 auto;
-
+    overflow: auto;
+    
     .threads-grid {
       @include flex-column;
-      @include width(100%);
       align-items: center;
+      max-width: $max-width;
+      min-width: $min-width;
+      margin: 0 auto;
       padding: $spacing-large;
 
       .error {
+        @include warning-message;
         color: $error;
-        font-weight: bold;
       }
 
       .no-data {
+        @include warning-message;
         color: $main-text;
-        font-size: 1.5rem;
-        text-align: center;
       }
     }
   }
