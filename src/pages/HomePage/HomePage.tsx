@@ -28,6 +28,8 @@ export const HomePage = (): JSX.Element => {
       <div className="threads-grid">
         {error ? (
           <div className="error">{error}</div>
+        ) : threadsGroups.length === 0 ? (
+          <div className="no-data">No data available</div>
         ) : (
           threadsGroups.map((group, index) => (
             <ThreadCard key={index} threadGroup={group} />

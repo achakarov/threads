@@ -1,10 +1,10 @@
 .thread-group {
+  @include width(100%);
   position: relative;
-  width: 100%;
-
+  
   .thread-card {
+    @include width(100%);
     position: relative;
-    width: 100%;
     margin-bottom: $spacing-xlarge;
     padding: $spacing-large;
     border-radius: 8px;
@@ -39,7 +39,7 @@
       justify-content: space-between;
 
       .left-side {
-        width: 70%;
+        @include width(70%);
         margin-right: $spacing-medium;
 
         .subject,
@@ -63,9 +63,14 @@
 
       .right-side {
         @include flex-column;
+        @include width(30%);
         align-items: flex-end;
-        width: 30%;
         color: $main-text;
+      }
+
+      .date,
+      .question {
+        font-size:0.9rem;
       }
     }
 
@@ -73,10 +78,11 @@
       position: absolute;
       top: -10px;
       right: $spacing-medium;
-      padding: 5px 10px;
+      width: 150px;
+      padding: $spacing-small $spacing-medium;
       border-radius: $spacing-medium;
       color: $card-background;
-      background-color: $count-low-rating;
+      text-align: center;
     }
 
     &.low-score {

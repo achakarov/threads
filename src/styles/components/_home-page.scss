@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 body {
+  font-family: 'Comfortaa', sans-serif;
   background-color: $main-background;
 
   .main-container {
@@ -8,13 +11,19 @@ body {
 
     .threads-grid {
       @include flex-column;
+      @include width(100%);
       align-items: center;
-      width: 100%;
-      padding: 20px;
+      padding: $spacing-large;
 
       .error {
         color: $error;
         font-weight: bold;
+      }
+
+      .no-data {
+        color: $main-text;
+        font-size: 1.5rem;
+        text-align: center;
       }
     }
   }
