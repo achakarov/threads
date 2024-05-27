@@ -11,7 +11,7 @@ export const HomePage = (): JSX.Element => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchThreads = async () => {
+    const fetchThreads = async (): Promise<void> => {
       try {
         const threads = await getThreads();
         setThreadsGroups(threads);
